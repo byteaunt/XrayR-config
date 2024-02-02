@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>XrayR配置文件在线生成</title>
+
+<script>
+    // 保存先前输入...
+function saveData() {
+    var placeholder0 = document.getElementById('placeholder0').value;
+    var placeholder1 = document.getElementById('placeholder1').value;
+    var placeholder2 = document.getElementById('placeholder2').value;
+    var placeholder3 = document.getElementById('placeholder3').value;
+    var placeholder4 = document.getElementById('placeholder4').value;
+    var placeholder5 = document.getElementById('placeholder5').value;
+    var placeholder6 = document.getElementById('placeholder6').value;
+    var placeholder7 = document.getElementById('placeholder7').value;
+    var placeholder8 = document.getElementById('placeholder8').value;
+
+    localStorage.setItem('placeholder0', placeholder0);
+    localStorage.setItem('placeholder1', placeholder1);
+    localStorage.setItem('placeholder2', placeholder2);
+    localStorage.setItem('placeholder3', placeholder3);
+    localStorage.setItem('placeholder4', placeholder4);
+    localStorage.setItem('placeholder5', placeholder5);
+    localStorage.setItem('placeholder6', placeholder6);
+    localStorage.setItem('placeholder7', placeholder7);
+    localStorage.setItem('placeholder8', placeholder8);
+    // 保存其他输入...
+}
+// 加载页面时恢复数据
+window.onload = function() {
+    if(localStorage.getItem('placeholder0')) {
+        document.getElementById('placeholder0').value = localStorage.getItem('placeholder0');
+    }
+    if(localStorage.getItem('placeholder1')) {
+        document.getElementById('placeholder1').value = localStorage.getItem('placeholder1');
+    }
+    if(localStorage.getItem('placeholder2')) {
+        document.getElementById('placeholder2').value = localStorage.getItem('placeholder2');
+    }
+    if(localStorage.getItem('placeholder3')) {
+        document.getElementById('placeholder3').value = localStorage.getItem('placeholder3');
+    }
+    if(localStorage.getItem('placeholder4')) {
+        document.getElementById('placeholder4').value = localStorage.getItem('placeholder4');
+    }
+    if(localStorage.getItem('placeholder5')) {
+        document.getElementById('placeholder5').value = localStorage.getItem('placeholder5');
+    }
+    if(localStorage.getItem('placeholder6')) {
+        document.getElementById('placeholder6').value = localStorage.getItem('placeholder6');
+    }
+    if(localStorage.getItem('placeholder7')) {
+        document.getElementById('placeholder7').value = localStorage.getItem('placeholder7');
+    }
+    if(localStorage.getItem('placeholder8')) {
+        document.getElementById('placeholder8').value = localStorage.getItem('placeholder8');
+    }
+    // 恢复其他输入...
+};
+</script>
+
+<script>
+    // placeholder内容检查...
+function generateConfig() {
+    var placeholder1 = document.getElementById('placeholder1').value;
+    var placeholder3 = document.getElementById('placeholder3').value;
+    var placeholder4 = document.getElementById('placeholder4').value;    
+    var placeholder5 = document.getElementById('placeholder5').value;
+    var placeholder7 = document.getElementById('placeholder7').value;
+    var placeholder8 = document.getElementById('placeholder8').value;
+    var errors = [];
+
+    // 检查 placeholder1 是否包含英文句号 '.'
+    if (!placeholder1.includes('.')) {
+        errors.push('检查到ApiHost网址不正确');
+    }
+    // 检查 placeholder3 是否是 0-999 之间的数字
+    if (!/^\d{1,3}$/.test(placeholder3) || placeholder3 < 0 || placeholder3 > 999) {
+        errors.push('检查到NodeID不正确');
+    }
+    // 如果 placeholder4 不是 "Shadowsocks" 或 "Shadowsocks-Plugin"，则执行以下检查
+    if (placeholder4 !== 'Shadowsocks' && placeholder4 !== 'Shadowsocks-Plugin') {
+        var placeholder7 = document.getElementById('placeholder7').value;
+        var placeholder8 = document.getElementById('placeholder8').value;
+
+    // 检查 placeholder5 是否包含英文句号 '.'
+    if (!placeholder5.includes('.')) {
+        errors.push('检查到CertDomain网址不正确');
+    }
+    // 检查 placeholder7 是否包含 '@' 和英文句号 '.'
+     if (!placeholder7.includes('@') || !placeholder7.includes('.')) {
+        errors.push('检查到CLOUDFLARE_EMAIL邮箱不正确');
+    }
+    // 检查 placeholder8 的长度是否在 36 到 38 个字符之间
+    if (placeholder8.length <= 35 || placeholder8.length >= 39) {
+        errors.push('检查到CLOUDFLARE_API_KEY不正确');
+    }
+}
+    // 如果存在错误，显示所有错误消息并终止函数执行
+    if (errors.length > 0) {
+        alert(errors.join('\n'));
+        return;
+    }
+
+    // 获取表单值
+    var placeholder0 = document.getElementById('placeholder0').value;
+    var placeholder1 = document.getElementById('placeholder1').value;
+    var placeholder2 = document.getElementById('placeholder2').value;
+    var placeholder3 = document.getElementById('placeholder3').value;
+    var placeholder4 = document.getElementById('placeholder4').value;
+    var placeholder5 = document.getElementById('placeholder5').value;
+    var placeholder6 = document.getElementById('placeholder6').value;
+    var placeholder7 = document.getElementById('placeholder7').value;
+    var placeholder8 = document.getElementById('placeholder8').value;
+
+    // 使用模板字符串生成配置
+    var config = `Log:
+  Level: warning
+  AccessPath:
+  ErrorPath:
+DnsConfigPath:
+RouteConfigPath:
+InboundConfigPath:
+OutboundConfigPath:
+ConnectionConfig:
+  Handshake: 4
+  ConnIdle: 30
+  UplinkOnly: 2
+  DownlinkOnly: 4
+  BufferSize: 64
+Nodes:
+  - PanelType: "${placeholder0}"
+    ApiConfig:
+      ApiHost: "http://${placeholder1}"
+      ApiKey: "${placeholder2}"
+      NodeID: ${placeholder3}
+      NodeType: ${placeholder4}
+      Timeout: 30
+      EnableVless: false
+      VlessFlow: "xtls-rprx-vision"
+      SpeedLimit: 0
+      DeviceLimit: 0
+      RuleListPath:
+      DisableCustomConfig: false
+    ControllerConfig:
+      ListenIP: 0.0.0.0
+      SendIP: 0.0.0.0
+      UpdatePeriodic: 60
+      EnableDNS: false
+      DNSType: AsIs
+      EnableProxyProtocol: false
+      AutoSpeedLimitConfig:
+        Limit: 0 
+        WarnTimes: 0
+        LimitSpeed: 0
+        LimitDuration: 0
+      GlobalDeviceLimitConfig:
+        Enable: false
+        RedisAddr: 127.0.0.1:6379
+        RedisPassword: YOUR PASSWORD
+        RedisDB: 0
+        Timeout: 5
+        Expiry: 60
+      EnableFallback: false
+      FallBackConfigs:
+        - SNI:
+          Alpn:
+          Path:
+          Dest: 80
+          ProxyProtocolVer: 0
+      DisableLocalREALITYConfig: false
+      EnableREALITY: false
+      REALITYConfigs:
+        Show: true
+        Dest: www.smzdm.com:443
+        ProxyProtocolVer: 0
+        ServerNames: 
+          - www.smzdm.com
+        PrivateKey: YOUR_PRIVATE_KEY
+        MinClientVer:
+        MaxClientVer:
+        MaxTimeDiff: 0
+        ShortIds:
+          - ""
+          - 0123456789abcdef
+      CertConfig:
+        CertMode: dns
+        CertDomain: "${placeholder5}"
+        CertFile: /etc/XrayR/cert/node1.test.com.cert
+        KeyFile: /etc/XrayR/cert/node1.test.com.key
+        Provider: ${placeholder6}
+        Email: test@me.com
+        DNSEnv:
+          CLOUDFLARE_EMAIL: ${placeholder7}
+          CLOUDFLARE_API_KEY: ${placeholder8}`;
+
+
+    // 将配置显示在文本区域
+    document.getElementById('generatedConfig').textContent = config;
+}
+</script>
+
+
+<script>
+    // 生成url和命令
+function writeConfigToServer() {
+    var textInput = document.getElementById('generatedConfig').value;
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "https://xrayr.wikk.eu.org/generate", true);
+    xhr.setRequestHeader("Content-Type", "text/plain");
+    
+    // 设置一个5秒的定时器来检查是否成功获取到downloadLink
+    var timeoutId = setTimeout(function() {
+        showErrorMessage();
+    }, 5000); // 5秒
+
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4) {
+            clearTimeout(timeoutId); // 取消定时器
+            if (xhr.status === 200) {
+                var response = JSON.parse(xhr.responseText);
+                var linkElement = document.getElementById('downloadLink');
+                linkElement.textContent = 'sudo wget -O /etc/XrayR/config.yml ' + response.link;
+                linkElement.style.display = 'block';
+                
+                copyToClipboard(linkElement.textContent);
+                showCopySuccessMessage();
+            } else {
+                // 请求失败时也显示错误信息
+                showErrorMessage();
+            }
+        }
+    };
+    xhr.send(textInput);
+}
+
+function copyToClipboard(text) {
+    var dummy = document.createElement("textarea");
+    document.body.appendChild(dummy);
+    dummy.value = text;
+    dummy.select();
+    document.execCommand("copy");
+    document.body.removeChild(dummy);
+}
+
+function showCopySuccessMessage() {
+    var messageDiv = document.getElementById("copySuccessMessage");
+    messageDiv.style.display = "block";
+    setTimeout(function() {
+        messageDiv.style.display = "none";
+    }, 3000); // 3秒后隐藏提示
+}
+
+function showErrorMessage() {
+    var errorDiv = document.getElementById("errorMessage");
+    errorDiv.style.display = "block";
+    setTimeout(function() {
+        errorDiv.style.display = "none";
+    }, 5000); // 5秒后隐藏提示
+}
+</script>
+
+</head>
+
+<body>
+
+<div id="copySuccessMessage" style="display:none; position:fixed; top:20; left:30; background-color:lightgreen; padding:10px; z-index:1000;">已复制一键配置XrayR命令</div>
+<div id="errorMessage" style="display:none; position:fixed; top:20px; left:30; background-color:lightcoral; padding:10px; z-index:1000;">请检查后端服务器</div>
+
+    <h3>一键生成XrayR配置文件</h3>
+<a href="https://xrayr-project.github.io/XrayR-doc/xrayr-pei-zhi-wen-jian-shuo-ming/config.html" target="_blank">XrayR官方文档</a><br><br>
+
+        <label for="placeholder0">PanelType:</label>
+<select id="placeholder0" name="placeholder0" onchange="saveData()">
+    <option value="NewV2board">NewV2board（V2board面板版本>1.7.0）</option>
+    <option value="SSpanel">SSpanel</option>
+    <option value="V2board">V2board（V2board面板版本<1.7.0）</option>
+</select><br>
+
+        <label for="placeholder1">ApiHost:</label> http(s)://
+        <input type="text" id="placeholder1" name="placeholder1" onchange="saveData()"><br>
+        <label for="placeholder2">ApiKey:</label>
+        <input type="text" id="placeholder2" name="placeholder2" style="width: 40ch" onchange="saveData()"><br>
+        <label for="placeholder3">NodeID:</label>
+        <input type="text" id="placeholder3" name="placeholder3" onchange="saveData()"><br>
+
+        <label for="placeholder4">NodeType:</label>
+<select id="placeholder4" name="placeholder4" onchange="saveData()">
+    <option value="V2ray">V2ray</option>
+    <option value="Shadowsocks">Shadowsocks（ss可不填写后需配置）</option>
+    <option value="Trojan">Trojan</option>
+    <option value="Shadowsocks-Plugin">Shadowsocks-Plugin</option>
+</select><br>
+        
+        <label for="placeholder5">CertDomain:</label>
+        <input type="text" id="placeholder5" name="placeholder5" onchange="saveData()"><br>
+
+        <label for="placeholder6">Provider:</label>
+<select id="placeholder6" name="placeholder6">
+    <option value="cloudflare">cloudflare</option>
+</select><br>
+
+<a href="https://go-acme.github.io/lego/dns/cloudflare/" target="_blank">仅支持CF，其他DNS服务商请自行研究</a><br>
+
+        <label for="placeholder7">CLOUDFLARE_EMAIL:</label>
+        <input type="text" id="placeholder7" name="placeholder7" onchange="saveData()"><br>
+        <label for="placeholder8">CLOUDFLARE_API_KEY:</label>
+        <input type="text" id="placeholder8" name="placeholder8" style="width: 38ch" onchange="saveData()">
+<br><br>
+
+        <button type="button" onclick="generateConfig()">生成配置文件</button>
+<br>
+    <textarea id="generatedConfig" rows="10" cols="70"></textarea>
+<br><br>
+    <!--  命令文本框 -->
+    <button type="button" onclick="writeConfigToServer()">一键配置服务器</button>
+<br>
+    <textarea id="downloadLink" rows="3" cols="70"></textarea>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YML文件生成器</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .container { max-width: 600px; margin: auto; }
+        textarea { width: 100%; height: 150px; margin-bottom: 10px; }
+        button { padding: 10px 20px; }
+        #downloadLink { word-wrap: break-word; } /* 确保长链接可以正确折行 */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>输入内容转换为YML文件</h2>
+        <textarea id="textInput" placeholder="在这里输入文本或代码"></textarea>
+        <button onclick="sendInputToBackend()">生成下载链接</button><br>
+        <div id="downloadLink"></div>
+    </div>
+    
+<script>
+function sendInputToBackend() {
+    var textInput = document.getElementById('textInput').value;
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "https://xrayr.wikk.eu.org/generate", true);
+    xhr.setRequestHeader("Content-Type", "text/plain");
+    
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            var response = JSON.parse(xhr.responseText);
+            var linkElement = document.getElementById('downloadLink');
+            // 直接将链接文本显示在页面上
+            linkElement.textContent = response.link;
+            linkElement.style.display = 'block'; // 确保div可见
+        }
+    };
+    
+    xhr.send(textInput);
+}
+</script>
+
+
+</body>
+</html>
