@@ -4,7 +4,7 @@
 ![](https://img.shields.io/github/forks/bytefrontiers/XrayR-config)
 ![](https://github.com/XrayR-project/XrayR/actions/workflows/docker.yml/badge.svg)
 
-[English](https://github.com/bytefrontiers/XrayR-config/)
+[English](https://github.com/bytefrontiers/XrayR-config/) | [前端](https://github.com/bytefrontiers/XrayR-config/) | [yml生成下载链接](https://bytefrontiers.github.io/XrayR-config/yml2url/)
 
 An one-click online XrayR-config file gererator.
 
