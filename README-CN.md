@@ -4,7 +4,7 @@
 ![](https://img.shields.io/github/forks/bytefrontiers/XrayR-config)
 ![](https://github.com/XrayR-project/XrayR/actions/workflows/docker.yml/badge.svg)
 
-[English](https://github.com/bytefrontiers/XrayR-config/blob/master/README.md)
+[English](https://github.com/bytefrontiers/XrayR-config/)
 
 An one-click online XrayR-config file gererator.
 
@@ -86,6 +86,12 @@ pm2 startup && pm2 save
 ### 6. 修改后端服务器地址
 
 部署完成后，需要修改 `index.html` 中 `xhr.open("POST", "https://example.com/generate", true);` 为你的服务器地址:端口; 如果你不想配置ssl证书，请修改为 `http://yourip:5909/generate`
+
+注意放行5909端口
+
+```bash
+sudo ufw allow 5909
+```
 
 ## Licence
 

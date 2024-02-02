@@ -87,6 +87,12 @@ pm2 startup && pm2 save
 
 After deployment, please change `xhr.open("POST", "https://example.com/generate", true);` in `index.html` to your domain; if you do not want to configure an SSL certificate, change it to `http://yourip:5909/generate`.
 
+Allow port 5909
+
+```bash
+sudo ufw allow 5909
+```
+
 ## Licence
 
 [Mozilla Public License Version 2.0](https://github.com/bytefrontiers/XrayR-config/blob/master/LICENSE)

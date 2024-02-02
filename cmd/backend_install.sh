@@ -29,4 +29,7 @@ pm2 start yml2url.js
 # 设置pm2随系统启动而启动
 pm2 startup && pm2 save
 
+# 放行5909端口
+sudo ufw allow 5909
+
 echo "Backend running, listening port:5909"
