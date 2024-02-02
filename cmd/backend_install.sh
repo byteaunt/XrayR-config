@@ -20,7 +20,7 @@ npm install express cors
 sudo npm install pm2 -g
 
 # 下载yml2url.js
-wget https://raw.githubusercontent.com/bytefrontiers/XrayR-config/yml2url/main/yml2url.js
+wget https://raw.githubusercontent.com/bytefrontiers/XrayR-config/main/yml2url/yml2url.js
 
 echo "Starting service..."
 # 使用pm2启动yml2url.js

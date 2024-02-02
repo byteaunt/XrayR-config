@@ -15,15 +15,17 @@ An one-click online XrayR-config file gererator.
 
 
 
-# 软件安装
+# 后端部署
+
+本项目贡献者提供了后端服务器，在此表示感谢。如果后端服务器失效，或者你希望部署自己的后端服务器，请看下面的内容。
 
 ## 一键安装
 
 ```
-wget -N https://raw.githubusercontent.com/bytefrontiers/XrayR-config/cmd/backend_install.sh && bash backend_install.sh
+wget -N https://raw.githubusercontent.com/bytefrontiers/XrayR-config/main/cmd/backend_install.sh && bash backend_install.sh
 ```
 
-
+部署完成后，需要修改 `index.html` 中 `xhr.open("POST", "https://example.com/generate", true);` 为你的服务器地址:端口; 如果你不想配置ssl证书，请修改为 `http://yourip:5909/generate`
 
 ## 手动安装
 
@@ -67,7 +69,7 @@ sudo npm install pm2 -g
 从GitHub下载 `yml2url.js` 文件到当前目录：
 
 ```bash
-wget https://raw.githubusercontent.com/bytefrontiers/XrayR-config/yml2url/main/yml2url.js
+wget https://raw.githubusercontent.com/bytefrontiers/XrayR-config/main/yml2url/yml2url.js
 ```
 
 你也可以使用 `/backend/xrayr_command.js` ，但需要注意配置SSL证书以支持 https ，并且设置允许的白名单域名 allowedOrigins
@@ -80,6 +82,10 @@ wget https://raw.githubusercontent.com/bytefrontiers/XrayR-config/yml2url/main/y
 pm2 start yml2url.js
 pm2 startup && pm2 save
 ```
+
+### 6. 修改后端服务器地址
+
+部署完成后，需要修改 `index.html` 中 `xhr.open("POST", "https://example.com/generate", true);` 为你的服务器地址:端口; 如果你不想配置ssl证书，请修改为 `http://yourip:5909/generate`
 
 ## Licence
 

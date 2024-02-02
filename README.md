@@ -15,15 +15,18 @@ This project is just my personal learning and development and maintenance. I do 
 
 
 
-# Software Installation
+# Configure Backend
+
+Contributors provided a backend service for us. If the backend server becomes unavailable, or if you wish to deploy your own backend server, please see the document.
+
 
 ## 1-Click installation
 
 ```
-wget -N https://raw.githubusercontent.com/bytefrontiers/XrayR-config/cmd/backend_install.sh && bash backend_install.sh
+wget -N https://raw.githubusercontent.com/bytefrontiers/XrayR-config/main/cmd/backend_install.sh && bash backend_install.sh
 ```
 
-
+After deployment, please change `xhr.open("POST", "https://example.com/generate", true);` in `index.html` to your domain; if you do not want to configure an SSL certificate, change it to `http://yourip:5909/generate`.
 
 ## Manual installation
 
@@ -67,7 +70,7 @@ sudo npm install pm2 -g
 Download the `yml2url.js`  file from GitHub to the current directory:
 
 ```bash
-wget https://raw.githubusercontent.com/bytefrontiers/XrayR-config/yml2url/main/yml2url.js
+wget https://raw.githubusercontent.com/bytefrontiers/XrayR-config/main/yml2url/yml2url.js
 ```
 
 You can also download `/backend/xrayr_command.js` , but be sure to configure the SSL certificate to support `HTTPS` , and set the allowed whitelist domains `allowedOrigins` .
@@ -80,6 +83,9 @@ Configure PM2 to ensure your application starts automatically with the system, l
 pm2 start yml2url.js
 pm2 startup && pm2 save
 ```
+### 6. Configure POST address
+
+After deployment, please change `xhr.open("POST", "https://example.com/generate", true);` in `index.html` to your domain; if you do not want to configure an SSL certificate, change it to `http://yourip:5909/generate`.
 
 ## Licence
 
