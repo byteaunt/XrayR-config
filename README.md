@@ -1,10 +1,10 @@
 <h1 align="center">XrayR</h1>
 
-![](https://img.shields.io/github/stars/bytefrontiers/XrayR-config)
-![](https://img.shields.io/github/forks/bytefrontiers/XrayR-config)
+![](https://img.shields.io/github/stars/byteaunt/XrayR-config)
+![](https://img.shields.io/github/forks/byteaunt/XrayR-config)
 ![](https://github.com/XrayR-project/XrayR/actions/workflows/docker.yml/badge.svg)
 
-[简体中文](https://github.com/bytefrontiers/XrayR-config/blob/master/README-CN.md) | [Fontend](https://bytefrontiers.github.io/XrayR-config/) | [yml2url](https://bytefrontiers.github.io/XrayR-config/yml2url/)
+[简体中文](https://github.com/byteaunt/XrayR-config/blob/master/README-CN.md) | [Fontend](https://byteaunt.github.io/XrayR-config/) | [yml2url](https://byteaunt.github.io/XrayR-config/yml2url/)
 
 An one-click online XrayR-config file gererator.
 
@@ -23,7 +23,7 @@ Contributors provided a backend service for us. If the backend server becomes un
 ## 1-Click installation
 
 ```
-wget -N https://raw.githubusercontent.com/bytefrontiers/XrayR-config/main/cmd/backend_install.sh && bash backend_install.sh
+wget -N https://raw.githubusercontent.com/byteaunt/XrayR-config/main/cmd/backend_install.sh && bash backend_install.sh
 ```
 
 After deployment, please change `xhr.open("POST", "https://example.com/generate", true);` in `index.html` to your domain; if you do not want to configure an SSL certificate, change it to `http://yourip:5909/generate`.
@@ -70,7 +70,7 @@ sudo npm install pm2 -g
 Download the `yml2url.js`  file from GitHub to the current directory:
 
 ```bash
-wget https://raw.githubusercontent.com/bytefrontiers/XrayR-config/main/yml2url/yml2url.js
+wget https://raw.githubusercontent.com/byteaunt/XrayR-config/main/yml2url/yml2url.js
 ```
 
 You can also download `/backend/xrayr_command.js` , but be sure to configure the SSL certificate to support `HTTPS` , and set the allowed whitelist domains `allowedOrigins` .
@@ -95,8 +95,8 @@ sudo ufw allow 5909
 
 ## Licence
 
-[Mozilla Public License Version 2.0](https://github.com/bytefrontiers/XrayR-config/blob/master/LICENSE)
+[Mozilla Public License Version 2.0](https://github.com/byteaunt/XrayR-config/blob/master/LICENSE)
 
 ## Stargazers over time
 
-[![Stargazers over time](https://starchart.cc/bytefrontiers/XrayR-config.svg)](https://starchart.cc/bytefrontiers/XrayR-config)
+[![Stargazers over time](https://starchart.cc/byteaunt/XrayR-config.svg)](https://starchart.cc/byteaunt/XrayR-config)

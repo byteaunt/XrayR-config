@@ -9,7 +9,7 @@ const port = 5908;
 // 自定义CORS中间件
 app.use((req, res, next) => {
     // 允许的域名列表，区分 http 和 https
-    const allowedOrigins = ['https://bytefrontiers.github.io'];
+    const allowedOrigins = ['https://byteaunt.github.io'];
 
     const origin = req.headers.origin;
 

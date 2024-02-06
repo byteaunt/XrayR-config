@@ -1,10 +1,10 @@
 <h1 align="center">XrayR</h1>
 
-![](https://img.shields.io/github/stars/bytefrontiers/XrayR-config)
-![](https://img.shields.io/github/forks/bytefrontiers/XrayR-config)
+![](https://img.shields.io/github/stars/byteaunt/XrayR-config)
+![](https://img.shields.io/github/forks/byteaunt/XrayR-config)
 ![](https://github.com/XrayR-project/XrayR/actions/workflows/docker.yml/badge.svg)
 
-[English](https://github.com/bytefrontiers/XrayR-config) | [前端](https://bytefrontiers.github.io/XrayR-config/) | [yml生成下载链接](https://bytefrontiers.github.io/XrayR-config/yml2url/)
+[English](https://github.com/byteaunt/XrayR-config) | [前端](https://byteaunt.github.io/XrayR-config/) | [yml生成下载链接](https://byteaunt.github.io/XrayR-config/yml2url/)
 
 An one-click online XrayR-config file gererator.
 
@@ -22,7 +22,7 @@ An one-click online XrayR-config file gererator.
 ## 一键安装
 
 ```
-wget -N https://raw.githubusercontent.com/bytefrontiers/XrayR-config/main/cmd/backend_install.sh && bash backend_install.sh
+wget -N https://raw.githubusercontent.com/byteaunt/XrayR-config/main/cmd/backend_install.sh && bash backend_install.sh
 ```
 
 部署完成后，需要修改 `index.html` 中 `xhr.open("POST", "https://example.com/generate", true);` 为你的服务器地址:端口; 如果你不想配置ssl证书，请修改为 `http://yourip:5909/generate`
@@ -69,7 +69,7 @@ sudo npm install pm2 -g
 从GitHub下载 `yml2url.js` 文件到当前目录：
 
 ```bash
-wget https://raw.githubusercontent.com/bytefrontiers/XrayR-config/main/yml2url/yml2url.js
+wget https://raw.githubusercontent.com/byteaunt/XrayR-config/main/yml2url/yml2url.js
 ```
 
 你也可以使用 `/backend/xrayr_command.js` ，但需要注意配置SSL证书以支持 https ，并且设置允许的白名单域名 allowedOrigins
@@ -95,8 +95,8 @@ sudo ufw allow 5909
 
 ## Licence
 
-[Mozilla Public License Version 2.0](https://github.com/bytefrontiers/XrayR-config/blob/master/LICENSE)
+[Mozilla Public License Version 2.0](https://github.com/byteaunt/XrayR-config/blob/master/LICENSE)
 
 ## Stargazers over time
 
-[![Stargazers over time](https://starchart.cc/bytefrontiers/XrayR-config.svg)](https://starchart.cc/bytefrontiers/XrayR-config)
+[![Stargazers over time](https://starchart.cc/byteaunt/XrayR-config.svg)](https://starchart.cc/byteaunt/XrayR-config)
