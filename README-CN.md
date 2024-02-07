@@ -93,6 +93,14 @@ pm2 startup && pm2 save
 sudo ufw allow 5909
 ```
 
+## 助力
+
+本项目助力以下网站批量部署客户端
+
+|                                        |                                   |       |
+| -------------------------------------- | --------------------------------- | ----- |
+| [网站1](https://v2boards.pages.dev) | [网站2](https://zhoushuren.me) | TBC.. |
+
 ## Licence
 
 [Mozilla Public License Version 2.0](https://github.com/byteaunt/XrayR-config/blob/master/LICENSE)
